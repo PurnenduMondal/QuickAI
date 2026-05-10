@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import { Edit, Eraser, Hash, Sparkles } from 'lucide-react'
+import axios from 'axios'
+
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
 const RemoveBackground = () => {
 
