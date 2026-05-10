@@ -167,7 +167,7 @@ export const removeImageObject = async (req, res) => {
     try {
         const { userId } = await req.auth()
         const { object } = req.body
-        const { image } = req.file;
+        const image = req.file;
         const plan = req.plan;
 
         if(plan != 'premium')
@@ -231,7 +231,7 @@ export const resumeReview = async (req, res) => {
         const content = response.choices[0].message.content;
 
         await sql`INSERT INTO creations (user_id, prompt, content, type) 
-        VALUES (${userId}, 'Review the uploaded Resume', ${imageUrl}, 'resume-review')`;
+        VALUES (${userId}, 'Review the uploaded Resume', ${content}, 'resume-review')`;
 
         res.json({success: true, content})
 
