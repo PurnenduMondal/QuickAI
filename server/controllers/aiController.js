@@ -4,7 +4,7 @@ import { clerkClient, getAuth } from "@clerk/express";
 import axios from "axios";
 import { v2 as cloudinary } from "cloudinary";
 import fs from 'fs'
-import pdf from "pdf-parse/lib/pdf-parse.js"
+import pdf  from "pdf-parse-new"
 
 const AI = new OpenAI({
     apiKey: process.env.GEMINI_API_KEY,
@@ -73,7 +73,7 @@ export const generateBlogTitle = async (req, res) => {
             model: "gemini-flash-latest",
             messages: [ { role: "user", content: prompt, }, ],
             temperature: 0.7,
-            max_tokens: 100
+            max_tokens: 800
         });
 
         const content = response.choices[0].message.content;
